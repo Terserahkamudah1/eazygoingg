@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang Belanja - Eazy Going</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Optional styling for cart */
+        .cart-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .cart-item {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        .cart-total {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Eazy Going</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produk.html">Produk</a></li>
+                <li><a href="#">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="cart">
+        <h2>Keranjang Belanja</h2>
+        <ul class="cart-list" id="cart-list">
+            <!-- Cart items will be dynamically added here -->
+        </ul>
+        <div class="cart-total" id="cart-total">
+            Total Belanja: Rp 0
+        </div>
+    </section>
+
+    <script>
+        // Function to add item to cart
+        function addToCart(productName, price) {
+            var cartList = document.getElementById('cart-list');
+            var cartTotal = document.getElementById('cart-total');
+
+            // Create list item for cart
+            var listItem = document.createElement('li');
+            listItem.classList.add('cart-item');
+            listItem.textContent = productName + ' - Rp ' + price;
+
+            // Append item to cart list
+            cartList.appendChild(listItem);
+
+            // Update total price
+            var currentTotal = parseInt(cartTotal.textContent.match(/\d+/)[0], 10); // Extract current total
+            var newTotal = currentTotal + parseInt(price, 10); // Add new price
+            cartTotal.textContent = 'Total Belanja: Rp ' + newTotal;
+        }
+
+        // Example usage: addToCart('Nama Produk', 50000);
+        // You can call this function when adding products to cart from produk.html or elsewhere
+    </script>
+
+    <footer>
+        <div class="contact-info">
+            <p>Email: EazyGoing.com</p>
+            <p>Telepon: 087791005827</p>
+        </div>
+        <div class="social-media">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <div class="newsletter">
+            <h3>Berlangganan Newsletter</h3>
+            <form>
+                <input type="email" placeholder="Masukkan email Anda">
+                <button type="submit">Berlangganan</button>
+            </form>
+        </div>
+    </footer>
+</body>
+</html>
